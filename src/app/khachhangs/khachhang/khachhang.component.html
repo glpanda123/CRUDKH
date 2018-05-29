@@ -1,0 +1,43 @@
+<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+  <div style="border: 1px solid saddlebrown">
+    <legend style="text-align: center;">Chỉnh sửa thông tin</legend>
+<img src="assets/img/user.png" class="img-responsive" alt="Image" id="imgForm">
+
+    <form #khachHangForm="ngForm" (ngSubmit)="onSubmit(khachHangForm)">
+      <div class="form-group">
+        <input type="hidden" class="form-control form-input" name="id" #id='ngModel' [(ngModel)]='khachhangService.selectedKhachHang.id'>
+        <label for="">NAME</label>
+        <input type="text" class="form-control form-input" placeholder="Nhập tên khách hàng" name="name" #name='ngModel' [(ngModel)]='khachhangService.selectedKhachHang.name'
+          required>
+        <div class="validation-err" *ngIf="name.touched && name.invalid ">Bạn phải nhập tên</div>
+        <label for="">COMPANY</label>
+        <input type="text" class="form-control form-input" placeholder="Nhập tên công ty" name="company" #company='ngModel' [(ngModel)]='khachhangService.selectedKhachHang.company'
+          required>
+        <div class="validation-err" *ngIf="company.touched && company.invalid">Bạn phải nhập công ty</div>
+        <label for="">EMAIL</label>
+        <input type="text" class="form-control form-input" placeholder="Nhập địa chỉ mail" name="email" #email='ngModel' [(ngModel)]='khachhangService.selectedKhachHang.email'
+          required email>
+        <div class="validation-err" *ngIf="email.touched && email?.errors?.required">Bạn phải nhập email</div>
+        <div class="validation-err" *ngIf="email.touched && email?.errors?.email">Bạn phải nhập đúng kiểu email</div>
+
+        <label for="">PHONE</label>
+        <input type="text" class="form-control form-input" placeholder="Nhập số điện thoại" name="phone" #phone='ngModel' [(ngModel)]='khachhangService.selectedKhachHang.phone'
+          required minlength="10" maxlength="11" pattern="[0-9]*">
+        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
+          <div class="validation-err" *ngIf="phone?.errors?.required">Bạn phải nhập số điện thoại</div>
+          <div class="validation-err" *ngIf="phone?.errors?.minlength">Số điện thoại phải có ít nhất 10 số</div>
+          <div class="validation-err" *ngIf="phone?.errors?.maxlength">Số điện thoại chỉ tối đa 11 số</div>
+          <div class="validation-err" *ngIf="phone?.errors?.pattern">Bạn phải nhập số</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <button type="submit" class="btn btn-success btn-can-giua" [disabled]="khachHangForm.invalid">Xác nhận</button>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <button type="button" class="btn btn-warning btn-can-giua" (click)="resetForm(khachHangForm)">Reset</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

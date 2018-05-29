@@ -1,0 +1,27 @@
+form {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-group {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.btn-can-giua {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.validation-err{
+  color: red;
+  text-align: center;
+}
+#imgForm{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -1,0 +1,40 @@
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="header">
+    <h1>Bảng quản trị khách hàng</h1>
+    <img src="assets/img/box.png" class="img-responsive" alt="Image">
+  </div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+  <button type="button" class="btn btn-primary button-left" (click)="onDelete(khachHangService.selectedKhachHang.id)">Xóa</button>
+  <input type="text" id="input${1/(\w+)/\u\1/g}" class="form-control" id="input-right"
+  placeholder="Nhập tên khách hàng cần tìm" [(ngModel)] = "searchTerm">
+  <button type="button" class="btn btn-primary" id="button-right">Tìm kiếm</button>
+  <table class="table table-hover" style="margin-top: 50px;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>
+          <a href="#" (click)="sortType('name'); clickCount1();" [class.active]="sortBy === 'name'">NAME</a>
+        </th>
+
+        <th>
+          <a href="#" (click)="sortType('company'); clickCount2();" [class.active]="sortBy === 'company'">COMPANY</a>
+        </th>
+
+        <th>MAIL</th>
+        <th>PHONE</th>
+      </tr>
+    </thead>
+<tbody *ngFor="let khachhang of KhachhangList | filter: searchTerm | paginate: {itemsPerPage:5, currentPage: p}">
+
+      <tr (click)="showToForm(khachhang)">
+        <td>{{ khachhang.id }}</td>
+        <td>{{ khachhang.name }}</td>
+        <td>{{ khachhang.company }}</td>
+        <td>{{ khachhang.email }}</td>
+        <td>{{ khachhang.phone }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>
